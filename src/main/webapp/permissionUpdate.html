@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>permissionUpdate.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+      <input type="text" name="username"/>
+        <input type="text" name="permission"/>
+          <input type="submit" name="点我修改" id="up"/>
+  </body>
+</html>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script>
+	$(function(){
+		$("#up").click(function(){
+			var username = $("input[name=username]").val();
+				var permission = $("input[name=permission]").val();
+				$.ajax({
+					url:'http://localhost:9090/updatePermission',
+					type:'post',
+					data:{"username":username,"permission":permission},
+					dataType:'text',
+					success:function(data){
+						alert(111)
+					}
+				})
+		})
+	})
+</script>

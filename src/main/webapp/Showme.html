@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Showme.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<div style="background: red" id="Login">
+		<p>
+			<span>当前登录用户为</span>
+		</p>
+	</div>
+	<div style="background: yellow" id="Permission">
+		<p>
+			<span>当前登录权限为</span>
+		</p>
+	</div>
+</body>
+</html>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script
+	src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script>
+	$(function() {
+		var Login = $("#Login");
+		var Permission = $("#Permission");
+			$.ajax({
+				url : 'http://localhost:9090/usernameGet',
+				dataTpye : 'get',
+				tpye : 'text',
+				success : function(username) {
+					Login.append(username);
+				}
+			});
+				$.ajax({
+				url : 'http://localhost:9090/findByusername',
+				dataTpye : 'get',
+				tpye : 'text',
+				success : function(permission) {
+					Permission.append(permission);
+				}
+			});
+	});
+</script>

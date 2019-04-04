@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>addaUser.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<input type="text" name="username" />
+	<input type="text" name="password" />
+	<input type="text" name="role" />
+	<input type="text" name="permission" />
+	<input type="submit" name="点我添加" id="addUser" />
+</body>
+</html>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script
+	src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script>
+	$(function() {
+		$("#addUser").click(function() {
+			var username = $( "input[name=username]" ).val();
+			var password = $( "input[name=password]" ).val();
+			var role = $( "input[name=role]" ).val();
+			var permission = $("input[name=permission]").val();
+			$.ajax({
+				url : 'http://localhost:9090/addAusername',
+				tpye : 'POST',
+				data : {"username":username,"password":password,"role":role,"permission":permission},
+				dataType : 'text',
+				success : function(data) {
+					alert("添加成功")
+				}
+			})
+		})
+	})
+</script>

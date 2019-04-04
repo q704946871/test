@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UserLogin.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body>
+	名字
+	<input type="text" name="username" />
+	<Br> 密码
+	<input type="text" name="password" />
+	<Br>
+	<input type="submit" name="登录" id="login" />
+</body>
+</html>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script>
+	$(function(){
+		$("#login").click(function(){
+			var username =$("input[name=username]").val();
+			var password =$("input[name=password]").val();
+			var name =$("input[name=name]").val();
+				$.ajax({
+					url:'http://localhost:9090/doLogin',
+					type:'get',
+					data:{"username":username,"password":password},
+					dataType:'text',
+					success:function(data){
+						window.location.href="http://localhost:9090/Showme.html";
+					}
+				});
+		});
+		
+	})
+</script>

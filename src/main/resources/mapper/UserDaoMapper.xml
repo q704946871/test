@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.users.dao.UsersDao">
+	<select id="Login" resultType="cn.users.Users">
+		select password,username from
+		users where password=#{password} and username=#{username}
+	</select>
+	<select id="findPermission" resultType="String" parameterType="String">
+		select permission from users where username=#{username}
+	</select>
+	<delete id="deleteById" parameterType="Integer">
+		delete from users where id
+		= #{id}
+	</delete>
+	<insert id="addoneman" parameterType="cn.users.Users">
+	INSERT INTO users (username,password,role,permission)
+	VALUES(#{username},#{password},#{role},#{permission})
+	</insert>
+	<update id="updateByName">
+		UPDATE users SET permission =#{permission} WHERE username = #{username}
+	</update>
+	<select id="findUsername" resultType="cn.users.Users" parameterType="String">
+		select username from users where username = #{username}
+	</select>
+	<select id="findall" resultType="cn.users.Users">
+		select * from users
+	</select>
+</mapper>
